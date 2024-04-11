@@ -21,7 +21,6 @@ const Attandence = () => {
       <table className="min-w-full">
         <thead>
           <tr>
-            <th className="px-4 py-2">ID</th>
             <th className="px-4 py-2">Employee ID</th>
             <th className="px-4 py-2">Check In</th>
             <th className="px-4 py-2">Check Out</th>
@@ -30,7 +29,6 @@ const Attandence = () => {
         <tbody>
           {attendanceRecords.map((record) => (
             <tr key={record.id}>
-              <td className="border px-4 py-2">{record.id}</td>
               <td className="border px-4 py-2">{record.employee_id}</td>
               <td className="border px-4 py-2">{record.check_in}</td>
               <td className="border px-4 py-2">

@@ -20,7 +20,7 @@ const EmployeeDetail = () => {
     <>
       <div>
         <div className="p-2 flex justify-center shadow">
-          <h4 className="text-center">Employee Management System</h4>
+          <h4 className="text-center">Profile</h4>
         </div>
         <div className="flex justify-center flex-col items-center mt-3">
           <img

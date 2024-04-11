@@ -7,6 +7,7 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { IoPeople } from "react-icons/io5";
 import { CiCalendarDate } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
+import { IoReorderThree } from "react-icons/io5";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
@@ -28,21 +29,21 @@ const Dashboard = () => {
           open ? "w-72" : "w-20 "
         } h-screen p-5  pt-8 relative duration-300 bg-purple-700`}
       >
-        <img
-          src="./src/assets/control.png"
+        <IoReorderThree
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
-          alt="Toggle Button"
+          size={50}
+          color="white"
         />
         <div className="flex gap-x-4 items-center">
-          <img
-            src="./src/assets/logo.png"
+          <IoReorderThree
             className={`cursor-pointer duration-500 ${
               open && "rotate-[360deg]"
             }`}
-            alt="Logo"
             onClick={() => setOpen(!open)}
+            size={50}
+            color="white"
           />
           <h1
             className={`text-white origin-left font-medium text-xl duration-200 ${
