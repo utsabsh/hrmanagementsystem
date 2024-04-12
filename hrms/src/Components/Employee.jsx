@@ -43,6 +43,7 @@ const Employee = () => {
         <table className="table-auto w-full">
           <thead>
             <tr>
+              <th className="px-4 py-2">ID</th>
               <th className="px-4 py-2">Name</th>
               <th className="px-4 py-2">Image</th>
               <th className="px-4 py-2">Email</th>
@@ -55,6 +56,7 @@ const Employee = () => {
           <tbody>
             {employee.map((e) => (
               <tr key={e.id}>
+                <td className="border px-4 py-2">{e.id}</td>
                 <td className="border px-4 py-2">{e.name}</td>
                 <td className="border px-4 py-2">
                   <img

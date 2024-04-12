@@ -25,7 +25,7 @@ const EmployeeDetail = () => {
         <div className="flex justify-center flex-col items-center mt-3">
           <img
             src={`http://localhost:3000/Images/${employee.image}`}
-            className="m-3 flex h-400 w-600 items-center justify-center rounded-full bg-blue-600"
+            className="m-3 flex h-40 w-40 items-center justify-center rounded-full bg-blue-600"
           />
           <div className="flex flex-col items-center mt-5">
             <h3>Name: {employee.name}</h3>
@@ -33,7 +33,6 @@ const EmployeeDetail = () => {
             <h3>Salary: ${employee.salary}</h3>
           </div>
 
-          <Link to={`/employee_attendence/` + id}>Attendence</Link>
         </div>
       </div>
     </>

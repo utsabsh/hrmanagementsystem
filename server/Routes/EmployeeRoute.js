@@ -40,11 +40,11 @@ router.get("/detail/:id", (req, res) => {
 });
 // Check-in
 router.post("/check-in/:id", (req, res) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
   const employeeId = parseInt(id, 10);
   const checkInTime = new Date().toISOString().slice(0, 19).replace("T", " ");
 
-  const sql = `INSERT INTO attendence_records (employee_id, check_in) VALUES (?, ?)`;
+  const sql = `INSERT INTO attendance_records (employee_id, check_in) VALUES (?, ?)`;
   con.query(sql, [employeeId, checkInTime], (err, result) => {
     if (err) {
       console.error("Error checking in:", err);
@@ -60,11 +60,12 @@ router.post("/check-in/:id", (req, res) => {
 
 // Check-out
 router.post("/check-out/:id", (req, res) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
+  console.log(id)
   const employeeId = parseInt(id, 10);
   const checkOutTime = new Date().toISOString().slice(0, 19).replace("T", " ");
 
-  const sql = `UPDATE attendence_records SET check_out = ? WHERE employee_id = ? AND check_out IS NULL`;
+  const sql = `UPDATE attendance_records SET check_out = ? WHERE employee_id = ? AND check_out IS NULL`;
   con.query(sql, [checkOutTime, employeeId], (err, result) => {
     if (err) {
       console.error("Error checking out:", err);
@@ -83,7 +84,7 @@ router.post("/check-out/:id", (req, res) => {
   });
 });
 router.get("/attendance", (req, res) => {
-  const sql = "SELECT * FROM attendence_records";
+  const sql = "SELECT * FROM attendance_records";
   con.query(sql, (err, result) => {
     if (err) {
       console.error("Error fetching attendance records:", err);

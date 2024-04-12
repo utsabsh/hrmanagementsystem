@@ -21,8 +21,10 @@ function EmployeeAttendance() {
     try {
       await axios.post(`http://localhost:3000/employee/check-out/` + id);
       setMessage("Checked out successfully");
+      console.log(id)
     } catch (error) {
       setMessage("Error checking out");
+      console.log(id)
     }
   };
 
