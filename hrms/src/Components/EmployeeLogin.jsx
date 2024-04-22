@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const EmployeeLogin = () => {
   const [values, setValues] = useState({
@@ -59,10 +59,12 @@ const EmployeeLogin = () => {
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
           <div className="mb-1 mt-2">
-            <input type="checkbox" name="tick" id="tick" className="me-2" />
-            <label htmlFor="password">
-              You are Agree with terms & conditions
-            </label>
+          <Link
+              to="/forgot-password"
+              className="text-blue-500 hover:underline"
+            >
+              Forgot Password?
+            </Link>
           </div>
 
           <div className="text-center">

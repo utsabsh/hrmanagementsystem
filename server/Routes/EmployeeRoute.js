@@ -29,6 +29,50 @@ router.post("/employee_login", (req, res) => {
     }
   });
 });
+router.post("/forgot-password", (req, res) => {
+  const { email } = req.body;
+  const sql = "SELECT * FROM employee WHERE email = ?";
+  con.query(sql, [email], (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: "Error querying the database" });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ message: "User with given email not found" });
+    }
+
+    const token = jwt.sign(
+      { id: results[0].id, email: results[0].email },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: '1h' }  // Token is valid for 1 hour
+    );
+
+    // TODO: Send email with the token
+    const resetLink = `http://localhost:3000/reset-password/${token}`;
+    console.log("Send this link via email: ", resetLink);  // Placeholder for email sending
+
+    return res.status(200).json({ message: "Password reset link has been sent to your email." });
+  });
+});
+
+router.post("/reset-password/:token", (req, res) => {
+  const { token } = req.params;
+  const { newPassword } = req.body;
+  jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: "Invalid or expired token" });
+    }
+
+    const hashedPassword = bcrypt.hashSync(newPassword, 10); // hashing the new password
+    const sql = "UPDATE employee SET password = ? WHERE id = ?";
+    con.query(sql, [hashedPassword, decoded.id], (err, result) => {
+      if (err) {
+        return res.status(500).json({ message: "Failed to reset password" });
+      }
+      return res.status(200).json({ message: "Password reset successfully" });
+    });
+  });
+});
+
 
 router.get("/detail/:id", (req, res) => {
   const id = req.params.id;
