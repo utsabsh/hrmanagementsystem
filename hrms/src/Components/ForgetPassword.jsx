@@ -1,50 +1,79 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import forgetImage from "../assets/forget.jpg";
 
-const ForgetPassword = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSubmit = async (e) => {
+export default function ForgetPassword() {
+  const form = useRef();
+  const navigate = useNavigate();
+  const sendEmail = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:3000/forgot-password', { email });
-      setMessage(response.data.message);
-    } catch (error) {
-      setMessage('Failed to send reset email. Please try again.');
-    }
+    emailjs
+      .sendForm(
+        "service_u1d8yrn",
+        "template_e6cc50k",
+        form.current,
+        "prX561F7ToOUiZrHN"
+      )
+      .then(navigate("/successMessage"))
+      .catch((err) => console.log(err));
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="w-full max-w-xs">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-              Email
+    <>
+      <div className="bg-gradient-to-r from-indigo-400 to-purple-600 h-screen flex flex-col justify-center items-center">
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="max-w-md mx-auto p-6 bg-slate-300 shadow-md rounded-lg mt-10"
+        >
+          <h1 className="text-2xl font-bold mb-6 text-center">
+            Forget Password Request
+          </h1>
+          <img
+            src={forgetImage}
+            alt="Forgetful Face"
+            className="w-40 h-auto mx-auto mt-10"
+          />
+
+          <div className="mb-6">
+            <label
+              htmlFor="email"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Email:
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
               type="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              id="email"
+              name="email"
+              className="w-full px-3 py-2 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-200"
+              placeholder="Enter your email"
             />
           </div>
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
+          <div className="mb-6">
+            <label
+              htmlFor="message"
+              className="block text-gray-700 font-bold mb-2"
             >
-              Send Reset Link
-            </button>
+              Message:
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              className="w-full px-3 py-2 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-200"
+              placeholder="Enter your message"
+              rows="4"
+            />
           </div>
-          {message && <p className="text-center text-red-500 mt-2">{message}</p>}
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:ring-indigo-200"
+          >
+            Send Email
+          </button>
         </form>
       </div>
-    </div>
+    </>
   );
-};
-
-export default ForgetPassword;
+}

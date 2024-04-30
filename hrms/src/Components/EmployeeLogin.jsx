@@ -8,9 +8,11 @@ const EmployeeLogin = () => {
     email: "",
     password: "",
   });
+
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -59,7 +61,7 @@ const EmployeeLogin = () => {
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
           <div className="mb-1 mt-2">
-          <Link
+            <Link
               to="/forgot-password"
               className="text-blue-500 hover:underline"
             >

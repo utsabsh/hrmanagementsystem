@@ -21,6 +21,7 @@ import EmployeeHome from "./Components/EmployeeHome";
 import EmployeeContact from "./Components/EmployeeContact";
 import IndividualAttendence from "./Components/IndividualAttendence";
 import ForgetPassword from "./Components/ForgetPassword";
+import SuccessMessage from "./Components/SuccessMessage";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
         <Route path="/" element={<Start />}></Route>
         <Route path="/adminlogin" element={<Loginpage />}></Route>
         <Route path="/employee_login" element={<EmployeeLogin />}></Route>
-        <Route path="/forgot-password" element={<ForgetPassword/>}></Route>
+        <Route path="/forgot-password" element={<ForgetPassword />}></Route>
+        <Route path="/successMessage" element={<SuccessMessage />}></Route>
         <Route path="/employee_dashboard" element={<EmployeeDashboard />}>
           <Route
             path="/employee_dashboard/contact/:id"
