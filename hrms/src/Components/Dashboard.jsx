@@ -8,6 +8,8 @@ import { IoPeople } from "react-icons/io5";
 import { CiCalendarDate } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
 import { IoReorderThree } from "react-icons/io5";
+import { TbZoomMoney } from "react-icons/tb";
+import { FaCalendarTimes } from "react-icons/fa";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
@@ -89,6 +91,24 @@ const Dashboard = () => {
               <CiCalendarDate color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 Attendance
+              </span>
+            </Link>
+            <Link
+              to="/dashboard/salary"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+            >
+              <TbZoomMoney color="white" size={25} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Salary
+              </span>
+            </Link>
+            <Link
+              to="/dashboard/leave"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+            >
+              <FaCalendarTimes color="white" size={25} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Leave
               </span>
             </Link>
 

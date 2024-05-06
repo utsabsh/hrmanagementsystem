@@ -7,6 +7,8 @@ import { IoReorderThree } from "react-icons/io5";
 import { IoMdContact } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
+import { TbZoomMoney } from "react-icons/tb";
+import { FaCalendarTimes } from "react-icons/fa";
 
 const EmployeeDashboard = () => {
   const { id } = useParams();
@@ -87,12 +89,30 @@ const EmployeeDashboard = () => {
               </span>
             </Link>
             <Link
+              to={"/employee_dashboard/salary/" + id}
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+            >
+              <TbZoomMoney color="white" size={25} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Salary
+              </span>
+            </Link>
+            <Link
               to={"/employee_dashboard/attendance/" + id}
               className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
             >
               <CiCalendarDate color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 Attendance
+              </span>
+            </Link>
+            <Link
+              to={"/employee_dashboard/leave/" + id}
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+            >
+              <FaCalendarTimes color="white" size={25} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Leave
               </span>
             </Link>
 

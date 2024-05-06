@@ -21,7 +21,7 @@ router.post("/adminlogin", (req, res) => {
       res.cookie("token", token);
       return res.json({ loginStatus: true });
     } else {
-      return res.json({ loginStatus: false, Error: "wrong email or password" });
+      return res.json({ loginStatus: false, Error: "Invalid Credentials" });
     }
   });
 });
@@ -64,7 +64,7 @@ router.post("/add_employee", upload.single("image"), (req, res) => {
   }
 
   const sql = `INSERT INTO employee 
-  (name, email, password, address,phone, salary, image, category_id) 
+  (name, email, password, address,phone, salary, bonus, overtime, image, category_id) 
   VALUES (?)`;
 
   bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -80,6 +80,8 @@ router.post("/add_employee", upload.single("image"), (req, res) => {
       req.body.address,
       req.body.phone,
       req.body.salary,
+      req.body.bonus,
+      req.body.overtime,
       req.file.filename,
       req.body.category_id,
     ];
@@ -93,9 +95,41 @@ router.post("/add_employee", upload.single("image"), (req, res) => {
     });
   });
 });
+router.post("/add_leave/:id", (req, res) => {
+  const id = req.params.id; // Assuming you're passing id as a parameter
+
+  const sql = `INSERT INTO leave_records
+    (employee_id, description, type, from_date, to_date, status) 
+    VALUES (?)`;
+
+  const values = [
+    id,
+    req.body.description,
+    req.body.type,
+    req.body.from_date,
+    req.body.to_date,
+    req.body.status,
+  ];
+
+  con.query(sql, [values], (err, result) => {
+    if (err) {
+      console.error("Error executing SQL query:", err);
+      return res.status(500).json({ status: false, error: "Database error" });
+    }
+
+    return res.json({ status: true });
+  });
+});
 
 router.get("/employee", (req, res) => {
   const sql = "SELECT * FROM employee";
+  con.query(sql, (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" });
+    return res.json({ Status: true, Result: result });
+  });
+});
+router.get("/leave", (req, res) => {
+  const sql = "SELECT * FROM leave_records";
   con.query(sql, (err, result) => {
     if (err) return res.json({ Status: false, Error: "Query Error" });
     return res.json({ Status: true, Result: result });
@@ -138,6 +172,58 @@ router.delete("/delete_employee/:id", (req, res) => {
     return res.json({ Status: true, Result: result });
   });
 });
+// Assume you have already set up your express app and connected to your database
+
+// Update the status of a leave request
+// Assume you have already set up your express app and connected to your database
+
+// Update the status of a leave request
+router.put("/update_leave/:id", (req, res) => {
+  const id = req.params.id;
+  const { status } = req.body;
+
+  const sql = `UPDATE leave_records SET status = ? WHERE id = ?`;
+  const values = [status, id];
+
+  con.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Error executing SQL query:", err);
+      return res.status(500).json({ status: false, error: "Database error" });
+    }
+
+    if (result.affectedRows === 0) {
+      return res
+        .status(404)
+        .json({ status: false, error: "Leave request not found" });
+    }
+
+    return res.json({ status: true });
+  });
+});
+
+router.put("/Accept/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = `UPDATE leave 
+  set status = ?
+  Where id = ?`;
+  const values = ["Accept"];
+  con.query(sql, [id], (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+router.put("/decline/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = `UPDATE leave 
+  set status = ?
+  Where id = ?`;
+  const values = ["Decline"];
+  con.query(sql, [id], (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
 router.get("/employee_count", (req, res) => {
   const sql = "select count(id) as employee from employee";
   con.query(sql, (err, result) => {
@@ -156,6 +242,22 @@ router.put("/edit_employee/:id", (req, res) => {
     req.body.salary,
     req.body.address,
     req.body.category_id,
+  ];
+  con.query(sql, [...values, id], (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err });
+    return res.json({ Status: true, Result: result });
+  });
+});
+router.put("/edit_salary/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = `UPDATE employee 
+        set name = ?, salary = ?, bonus = ?,  overtime= ?
+        Where id = ?`;
+  const values = [
+    req.body.name,
+    req.body.salary,
+    req.body.bonus,
+    req.body.overtime,
   ];
   con.query(sql, [...values, id], (err, result) => {
     if (err) return res.json({ Status: false, Error: "Query Error" + err });

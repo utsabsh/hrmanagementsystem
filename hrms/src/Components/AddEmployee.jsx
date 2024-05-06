@@ -8,6 +8,8 @@ const AddEmployee = () => {
     email: "",
     password: "",
     salary: "",
+    bonus: "0",
+    overtime: "0",
     address: "",
     phone: "",
     category_id: "1",
@@ -38,6 +40,8 @@ const AddEmployee = () => {
     formData.append("address", employee.address);
     formData.append("phone", employee.phone);
     formData.append("salary", employee.salary);
+    formData.append("bonus", employee.bonus);
+    formData.append("overtime", employee.overtime);
     formData.append("image", employee.image);
     formData.append("category_id", employee.category_id);
     console.log(employee);

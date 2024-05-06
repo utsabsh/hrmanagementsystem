@@ -1,47 +1,68 @@
-import React, { useState, useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-function App() {
-  const [salaries, setSalaries] = useState([]);
+const Salary = () => {
+  const [employee, setEmployee] = useState([]);
 
   useEffect(() => {
-    fetchSalaries();
+    axios
+      .get("http://localhost:3000/auth/employee")
+      .then((result) => {
+        if (result.data.Status) {
+          setEmployee(result.data.Result);
+        } else {
+          alert(result.data.Error);
+        }
+      })
+      .catch((err) => console.log(err));
   }, []);
 
-  const fetchSalaries = async () => {
-    try {
-      const response = await fetch(`${config.backendUrl}/api/salaries`);
-      const data = await response.json();
-      setSalaries(data);
-    } catch (error) {
-      console.error("Error fetching salaries:", error);
-    }
-  };
-
   return (
-    <div className="container mx-auto">
-      <h1 className="text-3xl font-semibold mb-4">Salary List</h1>
-      <table className="table-auto">
-        <thead>
-          <tr>
-            <th className="px-4 py-2">ID</th>
-            <th className="px-4 py-2">Employee ID</th>
-            <th className="px-4 py-2">Salary</th>
-            <th className="px-4 py-2">Bonus</th>
-          </tr>
-        </thead>
-        <tbody>
-          {salaries.map((salary) => (
-            <tr key={salary.id}>
-              <td className="border px-4 py-2">{salary.id}</td>
-              <td className="border px-4 py-2">{salary.employee_id}</td>
-              <td className="border px-4 py-2">{salary.salary}</td>
-              <td className="border px-4 py-2">{salary.bonus}</td>
+    <div className="px-5 mt-3">
+      <div className="flex justify-center">
+        <h3>Salary List</h3>
+      </div>
+
+      <div className="mt-3">
+        <table className="table-auto w-full text-center capitalize">
+          <thead>
+            <tr>
+              <th className="px-4 py-2">ID</th>
+              <th className="px-4 py-2">Name</th>
+              <th className="px-4 py-2">Salary</th>
+              <th className="px-4 py-2">Bonus</th>
+              <th className="px-4 py-2">Overtime</th>
+              <th className="px-4 py-2">Total</th>
+              <th className="px-4 py-2">Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {employee.map((e) => (
+              <tr key={e.id}>
+                <td className="border px-4 py-2">{e.id}</td>
+                <td className="border px-4 py-2">{e.name}</td>
+                <td className="border px-4 py-2">{e.salary}</td>
+                <td className="border px-4 py-2">{e.bonus}</td>
+                <td className="border px-4 py-2">{e.overtime}</td>
+                <td className="border px-4 py-2">
+                  {e.salary + e.bonus + e.overtime}
+                </td>
+                <td className="border px-4 py-2">
+                  <Link
+                    to={`/dashboard/edit_salary/${e.id}`}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2"
+                  >
+                    Edit
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Salary;

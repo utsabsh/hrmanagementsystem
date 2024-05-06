@@ -15,9 +15,14 @@ const Attandence = () => {
         console.error("Error fetching attendance records:", error);
       });
   }, []);
+  const formatDateTime = (timestamp) => {
+    if (!timestamp) return "N/A";
+    const date = new Date(timestamp);
+    return date.toLocaleString();
+  };
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Attendance Records</h1>
+      <h1 className="text-2xl font-bold mb-4 p-5">Attendance Records</h1>
       <table className="min-w-full">
         <thead>
           <tr>
@@ -29,10 +34,14 @@ const Attandence = () => {
         <tbody>
           {attendanceRecords.map((record) => (
             <tr key={record.id}>
-              <td className="border px-4 py-2">{record.employee_id}</td>
-              <td className="border px-4 py-2">{record.check_in}</td>
-              <td className="border px-4 py-2">
-                {record.check_out || "Not checked out"}
+              <td className="border px-4 py-2 text-center">
+                {record.employee_id}
+              </td>
+              <td className="border px-4 py-2 text-center">
+                {formatDateTime(record.check_in)}
+              </td>
+              <td className="border px-4 py-2 text-center">
+                {formatDateTime(record.check_out) || "Not checked out"}
               </td>
             </tr>
           ))}

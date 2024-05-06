@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 dotenv.config();
 
-console.log("Loaded environment variables:", process.env);
+// console.log("Loaded environment variables:", process.env);
 
 const app = express();
 
