@@ -101,7 +101,7 @@ router.post("/add_leave/:id", (req, res) => {
   const sql = `INSERT INTO leave_records
     (employee_id, description, type, from_date, to_date, status) 
     VALUES (?)`;
-
+  console.log(req.body);
   const values = [
     id,
     req.body.description,
@@ -148,19 +148,28 @@ router.get("/employee/:id", (req, res) => {
 router.put("/edit_employee/:id", (req, res) => {
   const id = req.params.id;
   const sql = `UPDATE employee 
-        set name = ?, email = ?, salary = ?, address = ?, phone = ?,  category_id = ? 
+        set name = ?, email = ?, salary = ?, address = ?, password=?, phone = ?,  category_id = ? 
         Where id = ?`;
-  const values = [
-    req.body.name,
-    req.body.email,
-    req.body.salary,
-    req.body.address,
-    req.body.phone,
-    req.body.category_id,
-  ];
-  con.query(sql, [...values, id], (err, result) => {
-    if (err) return res.json({ Status: false, Error: "Query Error" + err });
-    return res.json({ Status: true, Result: result });
+  bcrypt.hash(req.body.password, 10, (err, hash) => {
+    if (err)
+      return res
+        .status(500)
+        .json({ status: false, error: "Password hashing error" });
+
+    const values = [
+      req.body.name,
+      req.body.email,
+      req.body.salary,
+      req.body.address,
+      hash,
+      req.body.phone,
+      req.body.category_id,
+    ];
+
+    con.query(sql, [...values, id], (err, result) => {
+      if (err) return res.json({ Status: false, Error: "Query Error" + err });
+      return res.json({ Status: true, Result: result });
+    });
   });
 });
 
@@ -198,29 +207,6 @@ router.put("/update_leave/:id", (req, res) => {
     }
 
     return res.json({ status: true });
-  });
-});
-
-router.put("/Accept/:id", (req, res) => {
-  const id = req.params.id;
-  const sql = `UPDATE leave 
-  set status = ?
-  Where id = ?`;
-  const values = ["Accept"];
-  con.query(sql, [id], (err, result) => {
-    if (err) return res.json({ Status: false, Error: "Query Error" + err });
-    return res.json({ Status: true, Result: result });
-  });
-});
-router.put("/decline/:id", (req, res) => {
-  const id = req.params.id;
-  const sql = `UPDATE leave 
-  set status = ?
-  Where id = ?`;
-  const values = ["Decline"];
-  con.query(sql, [id], (err, result) => {
-    if (err) return res.json({ Status: false, Error: "Query Error" + err });
-    return res.json({ Status: true, Result: result });
   });
 });
 

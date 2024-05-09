@@ -58,12 +58,6 @@ function Login() {
             placeholder="Enter Password"
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
-          <div className="mb-1 mt-2">
-            <input type="checkbox" name="tick" id="tick" className="me-2" />
-            <label htmlFor="password">
-              You are Agree with terms & conditions
-            </label>
-          </div>
 
           <div className="text-center">
             <button

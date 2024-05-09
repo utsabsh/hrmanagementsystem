@@ -30,7 +30,6 @@ const EmployeeContact = () => {
             <tr>
               <th className="px-4 py-2">Name</th>
 
-              <th className="px-4 py-2">Photos</th>
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Phone</th>
             </tr>
@@ -38,17 +37,21 @@ const EmployeeContact = () => {
           <tbody>
             {employee.map((e) => (
               <tr key={e.id}>
-                <td className="border px-4 py-2">{e.name}</td>
-                <td className="border px-4 py-2">
-                  <img
-                    src={`http://localhost:3000/Images/${e.image}`}
-                    alt={e.name}
-                    className="w-15 h-10"
-                  />
+                <td className="border px-4 py-2 ">
+                  <div className="flex flex-row">
+                    <img
+                      src={`http://localhost:3000/Images/${e.image}`}
+                      alt={e.name}
+                      className="w-7 h-7 m-3 flex  items-center justify-center rounded-full bg-blue-600 border border-black"
+                    />
+                    <p className="item-center justify-center text-center p-2 py-3">
+                      {e.name}
+                    </p>
+                  </div>
                 </td>
 
-                <td className="border px-4 py-2">{e.email}</td>
-                <td className="border px-4 py-2">{e.phone}</td>
+                <td className="border px-4 py-2 text-center">{e.email}</td>
+                <td className="border px-4 py-2 text-center">{e.phone}</td>
               </tr>
             ))}
           </tbody>

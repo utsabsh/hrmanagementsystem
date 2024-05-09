@@ -9,6 +9,7 @@ import { CiCalendarDate } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
 import { TbZoomMoney } from "react-icons/tb";
 import { FaCalendarTimes } from "react-icons/fa";
+import logo from "../assets/logo.png";
 
 const EmployeeDashboard = () => {
   const { id } = useParams();
@@ -34,22 +35,14 @@ const EmployeeDashboard = () => {
           open ? "w-72" : "w-20 "
         } h-screen p-5  pt-8 relative duration-300 bg-purple-700`}
       >
-        <IoReorderThree
-          className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
-           border-2 rounded-full  ${!open && "rotate-180"}`}
-          onClick={() => setOpen(!open)}
-          size={50}
-          color="white"
-        />
-
         <div className="flex gap-x-4 items-center">
-          <IoReorderThree
+          <img
+            src={logo}
             className={`cursor-pointer duration-500 ${
               open && "rotate-[360deg]"
             }`}
+            alt="Logo"
             onClick={() => setOpen(!open)}
-            size={50}
-            color="white"
           />
           <h1
             className={`text-white origin-left font-medium text-xl duration-200 ${
@@ -68,17 +61,8 @@ const EmployeeDashboard = () => {
               <BsSpeedometer2 color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 Dashboard
-              </span>
-            </Link> */}
-            <Link
-              to={"/employee_dashboard/contact/" + id}
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
-            >
-              <MdContactMail color="white" size={25} />
-              <span className={`${!open && "hidden"} origin-left duration-200`}>
-                Contacts
-              </span>
-            </Link>
+                </span>
+              </Link> */}
             <Link
               to={"/employee_dashboard/employee_detail/" + id}
               className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
@@ -89,12 +73,21 @@ const EmployeeDashboard = () => {
               </span>
             </Link>
             <Link
+              to={"/employee_dashboard/contact/" + id}
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+            >
+              <MdContactMail color="white" size={25} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Contacts
+              </span>
+            </Link>
+            <Link
               to={"/employee_dashboard/salary/" + id}
               className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
             >
               <TbZoomMoney color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
-                Salary
+                Payroll
               </span>
             </Link>
             <Link

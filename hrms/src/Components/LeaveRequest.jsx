@@ -1,9 +1,10 @@
 // LeaveRequest.js
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LeaveRequest = () => {
+  const navigate = useNavigate();
   const [leave, setLeave] = useState([]);
   const [error, setError] = useState("");
 
@@ -47,17 +48,11 @@ const LeaveRequest = () => {
         <h3>Leave Requests</h3>
       </div>
 
-      <Link
-        to="/dashboard/add_employee"
-        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Add Employee
-      </Link>
       <div className="mt-3">
         <table className="table-auto w-full">
           <thead>
             <tr>
-              <th className="px-4 py-2">ID</th>
+              <th className="px-4 py-2">Employee ID</th>
               <th className="px-4 py-2">Description</th>
               <th className="px-4 py-2">Type</th>
               <th className="px-4 py-2">From</th>
@@ -69,17 +64,29 @@ const LeaveRequest = () => {
           <tbody>
             {leave.map((e) => (
               <tr key={e.id}>
-                <td className="border px-4 py-2">{e.employee_id}</td>
-                <td className="border px-4 py-2">{e.description}</td>
-                <td className="border px-4 py-2">{e.type}</td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2 text-center">
+                  {e.employee_id}
+                </td>
+                <td className="border px-4 py-2 text-center">
+                  <button
+                    type="button"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => {
+                      navigate("/leaveDescription/" + e.id);
+                    }}
+                  >
+                    Description
+                  </button>
+                </td>
+                <td className="border px-4 py-2 text-center">{e.type}</td>
+                <td className="border px-4 py-2 text-center">
                   {new Date(e.from_date).toLocaleDateString()}
                 </td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2 text-center">
                   {new Date(e.to_date).toLocaleDateString()}
                 </td>
-                <td className="border px-4 py-2">{e.status}</td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2 text-center">{e.status}</td>
+                <td className="border px-4 py-2 text-center">
                   <button
                     className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 mx-4 rounded"
                     onClick={() => updateStatus(e.id, "Accepted")}

@@ -40,12 +40,12 @@ const Salary = () => {
           <tbody>
             {employee.map((e) => (
               <tr key={e.id}>
-                <td className="border px-4 py-2">{e.id}</td>
-                <td className="border px-4 py-2">{e.name}</td>
-                <td className="border px-4 py-2">{e.salary}</td>
-                <td className="border px-4 py-2">{e.bonus}</td>
-                <td className="border px-4 py-2">{e.overtime}</td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2 text-center">{e.id}</td>
+                <td className="border px-4 py-2 text-center">{e.name}</td>
+                <td className="border px-4 py-2 text-center">{e.salary}</td>
+                <td className="border px-4 py-2 text-center">{e.bonus}</td>
+                <td className="border px-4 py-2 text-center">{e.overtime}</td>
+                <td className="border px-4 py-2 text-center">
                   {e.salary + e.bonus + e.overtime}
                 </td>
                 <td className="border px-4 py-2">

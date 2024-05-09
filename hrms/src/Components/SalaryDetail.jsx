@@ -34,12 +34,16 @@ const SalaryDetail = () => {
           </thead>
           <tbody>
             <tr key={employee.id}>
-              <td className="border px-4 py-2">{employee.id}</td>
-              <td className="border px-4 py-2">{employee.name}</td>
-              <td className="border px-4 py-2">{employee.salary}</td>
-              <td className="border px-4 py-2">{employee.bonus}</td>
-              <td className="border px-4 py-2">{employee.overtime}</td>
-              <td className="border px-4 py-2">
+              <td className="border px-4 py-2 text-center">{employee.id}</td>
+              <td className="border px-4 py-2 text-center">{employee.name}</td>
+              <td className="border px-4 py-2 text-center">
+                {employee.salary}
+              </td>
+              <td className="border px-4 py-2 text-center">{employee.bonus}</td>
+              <td className="border px-4 py-2 text-center">
+                {employee.overtime}
+              </td>
+              <td className="border px-4 py-2 text-center">
                 {employee.salary + employee.bonus + employee.overtime}
               </td>
             </tr>

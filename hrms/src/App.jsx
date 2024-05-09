@@ -28,6 +28,7 @@ import SalaryDetail from "./Components/SalaryDetail";
 import Leave from "./Components/Leave";
 import AddLeaveRequest from "./Components/AddLeaveRequest";
 import LeaveRequest from "./Components/LeaveRequest";
+import Description from "./Components/Description";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/employee_login" element={<EmployeeLogin />}></Route>
         <Route path="/forgot-password" element={<ForgetPassword />}></Route>
         <Route path="/successMessage" element={<SuccessMessage />}></Route>
+        <Route path="leaveDescription/:id" element={<Description />} />
         <Route path="/employee_dashboard" element={<EmployeeDashboard />}>
           <Route
             path="/employee_dashboard/contact/:id"
@@ -62,6 +64,10 @@ function App() {
           <Route
             path="/employee_dashboard/add_leave/:id"
             element={<AddLeaveRequest />}
+          />
+          <Route
+            path="/employee_dashboard/leaveDescription/:id"
+            element={<Description />}
           />
         </Route>
 

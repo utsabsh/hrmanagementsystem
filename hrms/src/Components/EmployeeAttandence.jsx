@@ -21,10 +21,10 @@ function EmployeeAttendance() {
     try {
       await axios.post(`http://localhost:3000/employee/check-out/` + id);
       setMessage("Checked out successfully");
-      console.log(id)
+      console.log(id);
     } catch (error) {
       setMessage("Error checking out");
-      console.log(id)
+      console.log(id);
     }
   };
 
@@ -34,7 +34,7 @@ function EmployeeAttendance() {
         <div className="mb-4">
           <label
             htmlFor="employeeId"
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-700 text-xxl font-bold mb-2"
           >
             Employee ID:
           </label>
@@ -42,7 +42,7 @@ function EmployeeAttendance() {
         </div>
         <button
           onClick={handleCheckIn}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4"
         >
           Check In
         </button>

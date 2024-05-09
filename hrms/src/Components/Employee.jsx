@@ -45,7 +45,7 @@ const Employee = () => {
             <tr>
               <th className="px-4 py-2">ID</th>
               <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Image</th>
+
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Address</th>
               <th className="px-4 py-2">Phone</th>
@@ -56,20 +56,25 @@ const Employee = () => {
           <tbody>
             {employee.map((e) => (
               <tr key={e.id}>
-                <td className="border px-4 py-2">{e.id}</td>
-                <td className="border px-4 py-2">{e.name}</td>
-                <td className="border px-4 py-2">
-                  <img
-                    src={`http://localhost:3000/Images/${e.image}`}
-                    alt={e.name}
-                    className="w-15 h-10"
-                  />
+                <td className="border px-4 py-2 text-center">{e.id}</td>
+                <td className="border px-4 py-2 ">
+                  <div className="flex flex-row">
+                    <img
+                      src={`http://localhost:3000/Images/${e.image}`}
+                      alt={e.name}
+                      className="w-5 h-5 m-3 flex  items-center justify-center rounded-full bg-blue-600"
+                    />
+                    <p className="item-center justify-center text-center p-2">
+                      {e.name}
+                    </p>
+                  </div>
                 </td>
-                <td className="border px-4 py-2">{e.email}</td>
-                <td className="border px-4 py-2">{e.address}</td>
-                <td className="border px-4 py-2">{e.phone}</td>
-                <td className="border px-4 py-2">{e.salary}</td>
-                <td className="border px-4 py-2">
+
+                <td className="border px-4 py-2 text-center">{e.email}</td>
+                <td className="border px-4 py-2 text-center">{e.address}</td>
+                <td className="border px-4 py-2 text-center">{e.phone}</td>
+                <td className="border px-4 py-2 text-center">{e.salary}</td>
+                <td className="border px-4 py-2 text-center">
                   <Link
                     to={`/dashboard/edit_employee/${e.id}`}
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2"

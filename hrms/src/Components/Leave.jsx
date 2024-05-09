@@ -1,11 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Leave() {
   const [leave, setLeave] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true); // Set loading state before fetching data
@@ -50,16 +52,28 @@ function Leave() {
           <tbody>
             {leave.map((e) => (
               <tr key={e.id}>
-                <td className="border px-4 py-2">{e.employee_id}</td>
-                <td className="border px-4 py-2">{e.description}</td>
-                <td className="border px-4 py-2">{e.type}</td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2 text-center">
+                  {e.employee_id}
+                </td>
+                <td className="border px-4 py-2 text-center">
+                  <button
+                    type="button"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => {
+                      navigate("/leaveDescription/" + e.id);
+                    }}
+                  >
+                    Description
+                  </button>
+                </td>
+                <td className="border px-4 py-2 text-center">{e.type}</td>
+                <td className="border px-4 py-2 text-center ">
                   {new Date(e.from_date).toLocaleDateString()}
                 </td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2 text-center">
                   {new Date(e.to_date).toLocaleDateString()}
                 </td>
-                <td className="border px-4 py-2">{e.status}</td>
+                <td className="border px-4 py-2 text-center">{e.status}</td>
               </tr>
             ))}
           </tbody>

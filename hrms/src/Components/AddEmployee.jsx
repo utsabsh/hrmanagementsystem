@@ -59,10 +59,10 @@ const AddEmployee = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="flex justify-center items-center mt-3">
+    <div className="flex justify-center items-center mt-3 ">
       <div className="p-3 rounded w-96 border">
         <h3 className="text-center">Add Employee</h3>
-        <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
+        <form className="grid grid-cols-1 gap-4 scroll" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="inputName" className="block">
               Name
@@ -153,7 +153,7 @@ const AddEmployee = () => {
           </div>
           <div>
             <label htmlFor="category" className="block">
-              Category
+              Department
             </label>
             <select
               name="category_id"

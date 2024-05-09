@@ -9,6 +9,7 @@ const EditEmployee = () => {
     email: "",
     salary: "",
     address: "",
+    password: "",
     category_id: "",
   });
   const [category, setCategory] = useState([]);
@@ -34,6 +35,7 @@ const EditEmployee = () => {
           name: result.data.Result[0].name,
           email: result.data.Result[0].email,
           address: result.data.Result[0].address,
+          password: result.data.Result[0].password,
           salary: result.data.Result[0].salary,
           phone: result.data.Result[0].phone,
           category_id: result.data.Result[0].category_id,
@@ -137,6 +139,21 @@ const EditEmployee = () => {
               value={employee.address}
               onChange={(e) =>
                 setEmployee({ ...employee, address: e.target.value })
+              }
+            />
+          </div>
+          <div>
+            <label htmlFor="inputPassword" className="block">
+              Password
+            </label>
+            <input
+              type="text"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="inputAddress"
+              placeholder="***********"
+              autoComplete="off"
+              onChange={(e) =>
+                setEmployee({ ...employee, password: e.target.value })
               }
             />
           </div>
