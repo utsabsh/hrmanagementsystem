@@ -31,7 +31,7 @@ const Employee = () => {
   return (
     <div className="px-5 mt-3">
       <div className="flex justify-center">
-        <h3>Employee List</h3>
+        <h3 className="font-bold text-xl">Employee List</h3>
       </div>
       <Link
         to="/dashboard/add_employee"
@@ -62,9 +62,9 @@ const Employee = () => {
                     <img
                       src={`http://localhost:3000/Images/${e.image}`}
                       alt={e.name}
-                      className="w-5 h-5 m-3 flex  items-center justify-center rounded-full bg-blue-600"
+                      className="w-20 h-20 m-3 flex  items-center justify-center rounded-full bg-blue-600"
                     />
-                    <p className="item-center justify-center text-center p-2">
+                    <p className="item-center justify-center text-center p-8 mt-2">
                       {e.name}
                     </p>
                   </div>

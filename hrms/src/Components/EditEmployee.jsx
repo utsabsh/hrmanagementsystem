@@ -61,7 +61,7 @@ const EditEmployee = () => {
   return (
     <div className="flex justify-center items-center mt-3">
       <div className="p-3 rounded border w-1/2">
-        <h3 className="text-center">Edit Employee</h3>
+        <h3 className="text-center font-bold text-xl">Edit Employee</h3>
         <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="inputName" className="block">

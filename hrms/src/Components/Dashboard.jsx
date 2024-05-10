@@ -93,7 +93,7 @@ const Dashboard = () => {
             >
               <TbZoomMoney color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
-                Salary
+                Payroll
               </span>
             </Link>
             <Link

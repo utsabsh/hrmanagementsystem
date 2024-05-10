@@ -43,7 +43,7 @@ const EmployeeLogin = () => {
             Login to infotech hrms
           </h1>
         </div>
-        <div className="text-red-600 ">{error}</div>
+
         <form className="flex flex-col " onSubmit={handleSubmit}>
           <input
             className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded"
@@ -60,6 +60,7 @@ const EmployeeLogin = () => {
             placeholder="Enter Password"
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
+          <div className="text-red-600 ">{error}</div>
           <div className="mb-1 mt-2">
             <Link
               to="/forgot-password"

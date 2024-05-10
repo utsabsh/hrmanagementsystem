@@ -78,7 +78,7 @@ const EmployeeDashboard = () => {
             >
               <MdContactMail color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
-                Contacts
+                Employee
               </span>
             </Link>
             <Link

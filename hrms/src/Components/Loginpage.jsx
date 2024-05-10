@@ -38,10 +38,10 @@ function Login() {
       <div className="md:w-1/3 max-w-sm border p-3 bg-slate-200 rounded shadow-lg md:ml-6">
         <div className="text-center md:text-left">
           <h1 className="text-center mb-5 font-bold italic text-xl underline ">
-            Login to infotech hrms
+            Login to infotech HRMS
           </h1>
         </div>
-        <div className="text-red-600 ">{error}</div>
+
         <form className="flex flex-col " onSubmit={handlesubmit}>
           <input
             className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded"
@@ -58,7 +58,7 @@ function Login() {
             placeholder="Enter Password"
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
-
+          <div className="text-red-600 ">{error}</div>
           <div className="text-center">
             <button
               className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"

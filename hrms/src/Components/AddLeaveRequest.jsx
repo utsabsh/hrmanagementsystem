@@ -6,7 +6,7 @@ const AddLeaveRequest = () => {
   const [leaveRequest, setLeaveRequest] = useState({
     employee_id: "",
     description: "",
-    type: "sick",
+    type: "paid",
     from_date: "",
     to_date: "",
     status: "pending",
@@ -35,7 +35,7 @@ const AddLeaveRequest = () => {
   return (
     <div className="flex justify-center items-center mt-3">
       <div className="p-3 rounded w-96 border">
-        <h3 className="text-center">Add Leave Request</h3>
+        <h3 className="text-center font-bold text-xl">Add Leave Request</h3>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
           <label htmlFor="inputEmployeeId" className="block">
             Employee ID
@@ -81,7 +81,6 @@ const AddLeaveRequest = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             required
           >
-            <option value="sick">Sick</option>
             <option value="paid">Paid</option>
             <option value="unpaid">Unpaid</option>
           </select>

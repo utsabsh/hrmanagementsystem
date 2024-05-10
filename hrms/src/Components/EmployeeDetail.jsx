@@ -20,13 +20,13 @@ const EmployeeDetail = () => {
     <>
       <div>
         <div className="p-2 flex justify-center shadow">
-          <h4 className="text-center">Profile</h4>
+          <h4 className="text-center font-bold text-xl">Profile</h4>
         </div>
         <div className="flex flex-row ">
-          <div className="flex justify-center flex-col items-center mt-3 bg-slate-500 w-2/3 h-[87vh]">
+          <div className="flex justify-center flex-col items-center mt-3 bg-slate-300 w-2/3 h-[87vh]">
             <img
               src={`http://localhost:3000/Images/${employee.image}`}
-              className="m-3 flex h-40 w-40 items-center justify-center bg-blue-600"
+              className="m-3 flex h-40 w-40 rounded-lg items-center justify-center bg-blue-600"
             />
             <div className="flex flex-col items-center mt-5">
               <h3>{employee.name}</h3>

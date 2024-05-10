@@ -45,7 +45,7 @@ const LeaveRequest = () => {
   return (
     <div className="px-5 mt-3">
       <div className="flex justify-center">
-        <h3>Leave Requests</h3>
+        <h3 className="font-bold text-xl">Leave Requests</h3>
       </div>
 
       <div className="mt-3">

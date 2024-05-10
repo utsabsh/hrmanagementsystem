@@ -20,7 +20,7 @@ const Category = () => {
   return (
     <div className="px-5 mt-3">
       <div className="flex justify-center">
-        <h3 className="text-xl">Department List</h3>
+        <h3 className="text-xl font-bold">Department List</h3>
       </div>
       <Link
         to="/dashboard/add_category"
