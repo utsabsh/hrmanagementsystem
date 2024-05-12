@@ -65,7 +65,7 @@ const EmployeeDashboard = () => {
               </Link> */}
             <Link
               to={"/employee_dashboard/employee_detail/" + id}
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <IoMdContact color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -74,7 +74,7 @@ const EmployeeDashboard = () => {
             </Link>
             <Link
               to={"/employee_dashboard/contact/" + id}
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <MdContactMail color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -83,7 +83,7 @@ const EmployeeDashboard = () => {
             </Link>
             <Link
               to={"/employee_dashboard/salary/" + id}
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <TbZoomMoney color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -92,7 +92,7 @@ const EmployeeDashboard = () => {
             </Link>
             <Link
               to={"/employee_dashboard/attendance/" + id}
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <CiCalendarDate color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -101,7 +101,7 @@ const EmployeeDashboard = () => {
             </Link>
             <Link
               to={"/employee_dashboard/leave/" + id}
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <FaCalendarTimes color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -111,7 +111,7 @@ const EmployeeDashboard = () => {
 
             <li
               onClick={handleLogout}
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <CiLogout color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>

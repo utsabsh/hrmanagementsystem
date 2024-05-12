@@ -49,7 +49,7 @@ function Home() {
   return (
     <div>
       <div className="flex justify-around mt-5">
-        <div className="p-3 border shadow-sm w-1/4">
+        <div className="p-3 border shadow-sm w-1/4 bg-red-300">
           <div className="text-center pb-1">
             <h4>Admin</h4>
           </div>
@@ -59,7 +59,7 @@ function Home() {
             <h5>{adminTotal}</h5>
           </div>
         </div>
-        <div className="p-3 border shadow-sm w-1/4">
+        <div className="p-3 border shadow-sm w-1/4  bg-red-300">
           <div className="text-center pb-1">
             <h4>Employee</h4>
           </div>
@@ -69,7 +69,7 @@ function Home() {
             <h5>{employeeTotal}</h5>
           </div>
         </div>
-        <div className="p-3 border shadow-sm w-1/4">
+        <div className="p-3 border shadow-sm w-1/4  bg-red-300">
           <div className="text-center pb-1">
             <h4>Salary</h4>
           </div>

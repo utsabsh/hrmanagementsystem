@@ -53,7 +53,7 @@ const Dashboard = () => {
           <div className="mt-4">
             <Link
               to="/dashboard"
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <BsSpeedometer2 color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -62,7 +62,7 @@ const Dashboard = () => {
             </Link>
             <Link
               to="/dashboard/employee"
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white hover:bg-purple-500  text-gray-300 text-sm items-center gap-x-4"
             >
               <IoPeople color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -71,7 +71,7 @@ const Dashboard = () => {
             </Link>
             <Link
               to="/dashboard/category"
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <BiCategoryAlt color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -80,7 +80,7 @@ const Dashboard = () => {
             </Link>
             <Link
               to="/dashboard/attandence"
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <CiCalendarDate color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -89,7 +89,7 @@ const Dashboard = () => {
             </Link>
             <Link
               to="/dashboard/salary"
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <TbZoomMoney color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -98,7 +98,7 @@ const Dashboard = () => {
             </Link>
             <Link
               to="/dashboard/leave"
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <FaCalendarTimes color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -108,7 +108,7 @@ const Dashboard = () => {
 
             <li
               onClick={handleLogout}
-              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4"
+              className="flex rounded-md p-2 cursor-pointer hover:bg-light-white  hover:bg-purple-500 text-gray-300 text-sm items-center gap-x-4"
             >
               <CiLogout color="white" size={25} />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
