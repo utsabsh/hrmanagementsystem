@@ -3,6 +3,10 @@ import con from "../utils/db.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
+import moment from "moment-timezone";
+
+// Set the default time zone to Nepal
+moment.tz.setDefault("UTC");
 
 const router = express.Router();
 
@@ -53,7 +57,14 @@ router.get("/leavedetail/:id", (req, res) => {
 router.post("/check-in/:id", (req, res) => {
   const { id } = req.params;
   const employeeId = parseInt(id, 10);
-  const checkInTime = new Date().toISOString().slice(0, 19).replace("T", " ");
+  if (isNaN(employeeId)) {
+    return res.status(400).json({ error: "Invalid employee ID" });
+  }
+
+  const checkInTime = moment()
+    .tz("Asia/Kathmandu")
+    .format("YYYY-MM-DD HH:mm:ss");
+  console.log(checkInTime);
 
   const sql = `INSERT INTO attendence_records (employee_id, check_in) VALUES (?, ?)`;
   con.query(sql, [employeeId, checkInTime], (err, result) => {
@@ -72,17 +83,20 @@ router.post("/check-in/:id", (req, res) => {
 // Check-out
 router.post("/check-out/:id", (req, res) => {
   const { id } = req.params;
-  console.log(id);
   const employeeId = parseInt(id, 10);
-  const checkOutTime = new Date().toISOString().slice(0, 19).replace("T", " ");
+  if (isNaN(employeeId)) {
+    return res.status(400).json({ error: "Invalid employee ID" });
+  }
 
-  const sql = `UPDATE attendence_records SET check_out = ? WHERE employee_id = ? AND check_out IS NULL`;
-  con.query(sql, [checkOutTime, employeeId], (err, result) => {
+  // Retrieve the original check-in time from the database
+  const getCheckInTimeSql = `SELECT check_in FROM attendence_records WHERE employee_id = ? AND check_out IS NULL`;
+  con.query(getCheckInTimeSql, [employeeId], (err, result) => {
     if (err) {
-      console.error("Error checking out:", err);
-      return res.status(500).json({ error: "Error checking out" });
+      console.error("Error retrieving check-in time:", err);
+      return res.status(500).json({ error: "Error retrieving check-in time" });
     }
-    if (result.affectedRows === 0) {
+
+    if (result.length === 0) {
       console.error(
         "Employee ID not found or already checked out:",
         employeeId
@@ -91,9 +105,30 @@ router.post("/check-out/:id", (req, res) => {
         .status(404)
         .json({ error: "Employee ID not found or already checked out" });
     }
-    res.status(200).json({ message: "Checked out successfully" });
+
+    const checkInTime = result[0].check_in;
+
+    // Update the check-out time
+    const checkOutTime = moment()
+      .tz("Asia/Kathmandu")
+      .format("YYYY-MM-DD HH:mm:ss");
+
+    const updateCheckOutSql = `UPDATE attendence_records SET check_in=?, check_out = ? WHERE employee_id = ? AND check_out IS NULL`;
+    con.query(
+      updateCheckOutSql,
+      [checkInTime, checkOutTime, employeeId],
+      (err, result) => {
+        if (err) {
+          console.error("Error checking out:", err);
+          return res.status(500).json({ error: "Error checking out" });
+        }
+
+        res.status(200).json({ message: "Checked out successfully" });
+      }
+    );
   });
 });
+
 router.get("/attendance", (req, res) => {
   const sql = "SELECT * FROM attendence_records";
   con.query(sql, (err, result) => {

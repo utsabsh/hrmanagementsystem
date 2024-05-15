@@ -1,31 +1,33 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
 import IndividualAttendence from "./IndividualAttendence";
 
 function EmployeeAttendance() {
   const { id } = useParams();
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleCheckIn = async () => {
+    setLoading(true);
     try {
       await axios.post(`http://localhost:3000/employee/check-in/` + id);
       setMessage("Checked in successfully");
     } catch (error) {
       setMessage("Error checking in");
     }
+    setLoading(false);
   };
 
   const handleCheckOut = async () => {
+    setLoading(true);
     try {
       await axios.post(`http://localhost:3000/employee/check-out/` + id);
       setMessage("Checked out successfully");
-      console.log(id);
     } catch (error) {
       setMessage("Error checking out");
-      console.log(id);
     }
+    setLoading(false);
   };
 
   return (
@@ -42,15 +44,21 @@ function EmployeeAttendance() {
         </div>
         <button
           onClick={handleCheckIn}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4"
+          disabled={loading}
+          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4 ${
+            loading && "opacity-50 cursor-not-allowed"
+          }`}
         >
-          Check In
+          {loading ? "Checking In..." : "Check In"}
         </button>
         <button
           onClick={handleCheckOut}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 ml-4 rounded"
+          disabled={loading}
+          className={`bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 ml-4 rounded ${
+            loading && "opacity-50 cursor-not-allowed"
+          }`}
         >
-          Check Out
+          {loading ? "Checking Out..." : "Check Out"}
         </button>
         {message && <p className="mt-4">{message}</p>}
       </div>

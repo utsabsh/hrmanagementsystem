@@ -18,7 +18,7 @@ const Description = () => {
   }, [id]);
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center bg-purple-700">
       <div className="bg-gray-200 p-8 rounded shadow-md w-1/2">
         <h2 className="text-xl mb-2 font-bold">
           Employee id: {employee.employee_id}
