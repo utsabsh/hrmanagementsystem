@@ -28,7 +28,7 @@ const Category = () => {
       >
         Add Department
       </Link>
-      <div className="mt-3">
+      <div className="mt-3 flex justify-center ">
         <table className="table-auto">
           <thead>
             <tr>

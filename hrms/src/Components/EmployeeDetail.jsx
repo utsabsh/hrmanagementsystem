@@ -33,12 +33,16 @@ const EmployeeDetail = () => {
             </div>
           </div>
 
-          <div className="flex justify-center text-left flex-col  mt-3 border border-l-black w-1/3 gap-4">
-            <h3 className="ml-4">Employee id: {employee.id}</h3>
-            <h3 className="ml-4">Empoyee name: {employee.name}</h3>
-            <h3 className="ml-4">Phone no: {employee.phone}</h3>
-            <h3 className="ml-4">Address: {employee.address}</h3>
-            <h3 className="ml-4">Salary: {employee.salary}</h3>
+          <div className="flex justify-center text-left flex-col  mt-3  border border-l-black w-1/3 gap-4">
+            <h3 className="ml-4 mt-7">Employee id: {employee.id}</h3>
+            <hr className="border-gray-800 dark:border-white"></hr>
+            <h3 className="ml-4 mt-7">Empoyee name: {employee.name}</h3>
+            <hr className="border-gray-800 dark:border-white"></hr>
+            <h3 className="ml-4 mt-7">Phone no: {employee.phone}</h3>
+            <hr className="border-gray-800 dark:border-white"></hr>
+            <h3 className="ml-4 mt-7">Address: {employee.address}</h3>
+            <hr className="border-gray-800 dark:border-white"></hr>
+            <h3 className="ml-4 mt-7">Salary: {employee.salary}</h3>
           </div>
         </div>
       </div>

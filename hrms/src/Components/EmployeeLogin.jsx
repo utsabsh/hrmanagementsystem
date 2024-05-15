@@ -23,13 +23,14 @@ const EmployeeLogin = () => {
           navigate("/employee_dashboard/employee_detail/" + result.data.id);
         } else {
           setError(result.data.Error);
+          console.log(result.data.Error);
         }
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-14 items-center my-2 mx-5 md:mx-0 md:my-0 ">
+    <section className="h-screen  bg-purple-700 flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-14 items-center my-2 mx-5 md:mx-0 md:my-0 ">
       <div className="md:w-1/3 max-w-sm">
         <img
           src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
@@ -39,8 +40,8 @@ const EmployeeLogin = () => {
       <div className="border-r-[3px] border-slate-950"></div>
       <div className="md:w-1/3 max-w-sm border p-3 bg-slate-200 rounded shadow-lg md:ml-6">
         <div className="text-center md:text-left">
-          <h1 className="text-center mb-5 font-bold italic text-xl underline ">
-            Login to infotech hrms
+          <h1 className="text-center mb-5 font-bold text-xl ">
+            Login to Inovatetech hrms
           </h1>
         </div>
 

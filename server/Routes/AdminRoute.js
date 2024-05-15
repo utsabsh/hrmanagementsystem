@@ -62,9 +62,10 @@ router.post("/add_employee", upload.single("image"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ status: false, error: "No file uploaded" });
   }
+  console.log(req.body.phone);
 
   const sql = `INSERT INTO employee 
-  (name, email, password, address,phone, salary, bonus, overtime, image, category_id) 
+  (name, email, password, address, phone, salary, bonus, overtime, image, category_id) 
   VALUES (?)`;
 
   bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -85,6 +86,7 @@ router.post("/add_employee", upload.single("image"), (req, res) => {
       req.file.filename,
       req.body.category_id,
     ];
+    console.log(values);
 
     con.query(sql, [values], (err, result) => {
       if (err)

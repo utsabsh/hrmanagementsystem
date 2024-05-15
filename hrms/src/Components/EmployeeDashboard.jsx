@@ -123,7 +123,9 @@ const EmployeeDashboard = () => {
       </div>
       <div className="w-full">
         <div className="p-2 w-[100%] flex justify-center shadow">
-          <h4 className="text-xl">Employee Management System</h4>
+          <h4 className="text-xl font-bold">
+            Human Resourse Management System
+          </h4>
         </div>
 
         <Outlet></Outlet>

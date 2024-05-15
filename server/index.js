@@ -31,19 +31,16 @@ app.use(express.static("Public"));
 const verifyUser = (req, res, next) => {
   const token = req.cookies.token;
   if (token) {
-    jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
-      if (err)
-        return res.status(401).json({ Status: false, Error: "Wrong Token" });
+    jwt.verify(token, "jwt_secret_key", (err, decoded) => {
+      if (err) return res.json({ Status: false, Error: "Wrong Token" });
       req.id = decoded.id;
       req.role = decoded.role;
       next();
     });
   } else {
-    return res.status(401).json({ Status: false, Error: "Not authenticated" });
+    return res.json({ Status: false, Error: "Not autheticated" });
   }
 };
-
-// Route to verify user authentication
 app.get("/verify", verifyUser, (req, res) => {
   return res.json({ Status: true, role: req.role, id: req.id });
 });

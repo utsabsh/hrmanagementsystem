@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-useEffect;
 
 const Start = () => {
   const navigate = useNavigate();
@@ -14,7 +13,7 @@ const Start = () => {
           if (result.data.role === "admin") {
             navigate("/dashboard");
           } else {
-            navigate("/employee_detail/" + result.data.id);
+            navigate("/employee_dashboard/employee_detail/" + result.data.id);
           }
         }
       })
@@ -22,7 +21,7 @@ const Start = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen ">
+    <div className="flex justify-center items-center h-screen bg-purple-700 ">
       <div className="p-10 rounded w-1.5/4 border bg-gray-200">
         <h1 className="text-center text-xl italic pb-4 font-bold">
           Welcome to Innvovate Tech Nepal

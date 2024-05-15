@@ -26,7 +26,7 @@ router.post("/employee_login", (req, res) => {
         }
       });
     } else {
-      return res.json({ loginStatus: false, Error: "wrong email or password" });
+      return res.json({ loginStatus: false, Error: "Invalid Credentials" });
     }
   });
 });
