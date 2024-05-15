@@ -177,12 +177,31 @@ router.put("/edit_employee/:id", (req, res) => {
 
 router.delete("/delete_employee/:id", (req, res) => {
   const id = req.params.id;
-  const sql = "delete from employee where id = ?";
-  con.query(sql, [id], (err, result) => {
-    if (err) return res.json({ Status: false, Error: "Query Error" + err });
-    return res.json({ Status: true, Result: result });
+  const deleteAttendanceRecordsSql =
+    "delete from attendence_records where employee_id = ?";
+  const deleteEmployeeSql = "delete from employee where id = ?";
+
+  con.query(deleteAttendanceRecordsSql, [id], (err, result) => {
+    if (err) {
+      return res.json({
+        Status: false,
+        Error: "Error deleting attendance records: " + err,
+      });
+    }
+
+    con.query(deleteEmployeeSql, [id], (err, result) => {
+      if (err) {
+        return res.json({
+          Status: false,
+          Error: "Error deleting employee: " + err,
+        });
+      }
+
+      return res.json({ Status: true, Result: result });
+    });
   });
 });
+
 // Assume you have already set up your express app and connected to your database
 
 // Update the status of a leave request
