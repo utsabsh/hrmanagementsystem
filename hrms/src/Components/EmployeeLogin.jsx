@@ -41,7 +41,7 @@ const EmployeeLogin = () => {
       <div className="md:w-1/3 max-w-sm border p-3 bg-slate-200 rounded shadow-lg md:ml-6">
         <div className="text-center md:text-left">
           <h1 className="text-center mb-5 font-bold text-xl ">
-            Login to Inovatetech hrms
+            Login to Innovatetech HRMS
           </h1>
         </div>
 
