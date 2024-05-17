@@ -30,11 +30,11 @@ export default function ForgetPassword() {
           <h1 className="text-2xl font-bold mb-6 text-center">
             Forget Password Request
           </h1>
-          <img
+          {/* <img
             src={forgetImage}
             alt="Forgetful Face"
             className="w-40 h-auto mx-auto mt-10"
-          />
+          /> */}
 
           <div className="mb-6">
             <label

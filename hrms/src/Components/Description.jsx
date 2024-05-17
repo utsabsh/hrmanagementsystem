@@ -21,7 +21,7 @@ const Description = () => {
     <div className="min-h-screen flex justify-center items-center bg-purple-700">
       <div className="bg-gray-200 p-8 rounded shadow-md w-1/2">
         <h2 className="text-xl mb-2 font-bold">
-          Employee id: {employee.employee_id}
+          Employee Id: {employee.employee_id}
         </h2>
         <h2 className="text-xl mb-2">Description:</h2>
         <p className="px-4 py-2 bg-gray-100 rounded">{employee.description}</p>

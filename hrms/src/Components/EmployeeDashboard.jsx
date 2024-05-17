@@ -124,7 +124,7 @@ const EmployeeDashboard = () => {
       <div className="w-full">
         <div className="p-2 w-[100%] flex justify-center shadow">
           <h4 className="text-xl font-bold">
-            Human Resourse Management System
+            Human Resource Management System
           </h4>
         </div>
 

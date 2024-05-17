@@ -24,7 +24,7 @@ const Start = () => {
     <div className="flex justify-center items-center h-screen bg-purple-700 ">
       <div className="p-10 rounded w-1.5/4 border bg-gray-200">
         <h1 className="text-center text-xl italic pb-4 font-bold">
-          Welcome to Innvovate Tech Nepal
+          Login to Innovate Nepal HRMS
         </h1>
         <h2 className="text-center">Login As</h2>
         <div className="flex justify-between mt-5 mb-2">

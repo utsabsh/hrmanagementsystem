@@ -21,7 +21,7 @@ const EmployeeContact = () => {
   return (
     <div className="px-5 mt-3">
       <div className="flex justify-center">
-        <h3 className="font-bold text-xl">Employee Information List</h3>
+        <h3 className="font-bold text-xl">Employees Information List</h3>
       </div>
 
       <div className="mt-3">

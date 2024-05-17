@@ -66,7 +66,9 @@ function Leave() {
                     Description
                   </button>
                 </td>
-                <td className="border px-4 py-2 text-center">{e.type}</td>
+                <td className="border px-4 py-2 text-center capitalize">
+                  {e.type}
+                </td>
                 <td className="border px-4 py-2 text-center ">
                   {new Date(e.from_date).toLocaleDateString()}
                 </td>

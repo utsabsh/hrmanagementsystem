@@ -35,7 +35,7 @@ const EmployeeDetail = () => {
 
           <div className="flex justify-center text-left flex-col  mt-3  border border-l-black w-1/3 gap-4">
             <h3 className="ml-4 mt-7 flex gap-2 ">
-              <>Employee id: </>
+              <>Employee Id: </>
               <p className="capitalize"> {employee.id}</p>
             </h3>
             <hr className="border-gray-800 dark:border-white"></hr>

@@ -37,9 +37,7 @@ function EmployeeAttendance() {
           <label
             htmlFor="employeeId"
             className="block text-gray-700 text-xxl font-bold mb-2"
-          >
-            Employee ID:
-          </label>
+          ></label>
           <p>Employee ID: {id}</p>
         </div>
         <button
